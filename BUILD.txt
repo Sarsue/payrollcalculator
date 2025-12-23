@@ -1,0 +1,44 @@
+PAYROLL CALCULATOR - BUILD INSTRUCTIONS
+========================================
+
+RUN THE APP:
+-----------
+python main.py
+
+
+BUILD EXECUTABLE:
+----------------
+pip install pyinstaller
+
+pyinstaller --name "PayrollCalculator" --onefile \
+  --add-data "data:data" \
+  --add-data "logic:logic" \
+  --add-data "db:db" \
+  --add-data "ui:ui" \
+  --add-data "utils:utils" \
+  --noconfirm main.py
+
+
+RESULT:
+-------
+dist/PayrollCalculator (9.1 MB executable)
+
+
+RUN THE EXECUTABLE:
+------------------
+./dist/PayrollCalculator
+
+or double-click "PayrollCalculator" in Finder
+
+
+DISTRIBUTE TO CLIENTS:
+---------------------
+Share the dist/PayrollCalculator file
+- Email it or put in ZIP
+- Client double-clicks to run
+- No Python installation needed!
+
+
+CLEAN BUILD FILES:
+------------------
+rm -rf build/ dist/ *.spec

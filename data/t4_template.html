@@ -1,0 +1,218 @@
+<!-- data/t4_template.html -->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>T4 Statement of Remuneration Paid - {YEAR}</title>
+  <style>
+    @media screen {{
+      .pdf-instructions {{
+        background-color: #fff3cd;
+        border: 2px solid #ffc107;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 800px;
+        text-align: center;
+      }}
+      .pdf-instructions h3 {{
+        margin: 0 0 10px 0;
+        color: #856404;
+      }}
+      .pdf-instructions ol {{
+        text-align: left;
+        display: inline-block;
+        margin: 10px 0;
+      }}
+      .pdf-instructions li {{
+        margin: 5px 0;
+        font-size: 14px;
+      }}
+      .pdf-instructions .shortcut {{
+        background-color: #fff;
+        padding: 2px 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-family: monospace;
+        font-weight: bold;
+      }}
+    }}
+    @media print {{
+      .pdf-instructions {{
+        display: none;
+      }}
+    }}
+    body {{
+      font-family: Arial, sans-serif; 
+      font-size: 11px;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+    }}
+    .header {{
+      text-align: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #000;
+      padding-bottom: 10px;
+    }}
+    .header h1 {{
+      margin: 5px 0;
+      font-size: 18px;
+    }}
+    .header h2 {{
+      margin: 5px 0;
+      font-size: 14px;
+      font-weight: normal;
+    }}
+    .section {{
+      margin: 15px 0;
+      padding: 10px;
+      border: 1px solid #666;
+    }}
+    .section-title {{
+      font-weight: bold;
+      background-color: #f0f0f0;
+      padding: 5px;
+      margin: -10px -10px 10px -10px;
+      border-bottom: 1px solid #666;
+    }}
+    .info-row {{
+      margin: 5px 0;
+      display: flex;
+      justify-content: space-between;
+    }}
+    .label {{
+      font-weight: bold;
+      width: 250px;
+    }}
+    .value {{
+      text-align: right;
+      flex-grow: 1;
+    }}
+    .box-grid {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }}
+    .box {{
+      border: 1px solid #333;
+      padding: 8px;
+      background-color: #fff;
+    }}
+    .box-number {{
+      font-weight: bold;
+      color: #0066cc;
+      font-size: 10px;
+    }}
+    .box-label {{
+      font-size: 10px;
+      margin: 2px 0;
+    }}
+    .box-value {{
+      font-size: 13px;
+      font-weight: bold;
+      margin-top: 5px;
+    }}
+    .footer {{
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #999;
+      font-size: 9px;
+      color: #666;
+      text-align: center;
+    }}
+  </style>
+</head>
+<body>
+  <!-- PDF Conversion Instructions (only visible on screen, hidden when printing) -->
+  <div class="pdf-instructions">
+    <h3>📄 How to Save This T4 as PDF</h3>
+    <ol>
+      <li>Press <span class="shortcut">Ctrl+P</span> (Windows/Linux) or <span class="shortcut">⌘+P</span> (Mac)</li>
+      <li>In the print dialog, select <strong>"Save as PDF"</strong> or <strong>"Microsoft Print to PDF"</strong></li>
+      <li>Choose a location and filename</li>
+      <li>Click <strong>Save</strong></li>
+    </ol>
+    <p style="margin: 10px 0 0 0; font-size: 12px; color: #666;">
+      💡 This instruction box will not appear in the PDF
+    </p>
+  </div>
+
+  <div class="header">
+    <h1>T4 - STATEMENT OF REMUNERATION PAID</h1>
+    <h2>ÉTAT DE LA RÉMUNÉRATION PAYÉE</h2>
+    <h2>Tax Year / Année d'imposition: {YEAR}</h2>
+  </div>
+
+  <!-- Employer Information -->
+  <div class="section">
+    <div class="section-title">EMPLOYER / EMPLOYEUR</div>
+    <div class="info-row">
+      <span class="label">Employer Name / Nom de l'employeur:</span>
+      <span class="value">{COMPANY_NAME}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Business Number / Numéro d'entreprise:</span>
+      <span class="value">{BUSINESS_NUMBER}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Payroll Account / Compte de retenues:</span>
+      <span class="value">{PAYROLL_ACCOUNT}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Address / Adresse:</span>
+      <span class="value">{COMPANY_ADDRESS}</span>
+    </div>
+  </div>
+
+  <!-- Employee Information -->
+  <div class="section">
+    <div class="section-title">EMPLOYEE / EMPLOYÉ</div>
+    <div class="info-row">
+      <span class="label">Employee Name / Nom de l'employé:</span>
+      <span class="value">{EMP_NAME}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Social Insurance Number / Numéro d'assurance sociale:</span>
+      <span class="value">{EMP_SIN}</span>
+    </div>
+  </div>
+
+  <!-- T4 Boxes -->
+  <div class="section">
+    <div class="section-title">INCOME AND DEDUCTIONS / REVENUS ET RETENUES</div>
+    
+    <div class="box-grid">
+      <div class="box">
+        <div class="box-number">Box / Case 14</div>
+        <div class="box-label">Employment income / Revenus d'emploi</div>
+        <div class="box-value">$ {BOX14}</div>
+      </div>
+      
+      <div class="box">
+        <div class="box-number">Box / Case 16</div>
+        <div class="box-label">Employee's CPP contributions / Cotisations au RPC de l'employé</div>
+        <div class="box-value">$ {BOX16}</div>
+      </div>
+      
+      <div class="box">
+        <div class="box-number">Box / Case 18</div>
+        <div class="box-label">Employee's EI premiums / Cotisations d'AE de l'employé</div>
+        <div class="box-value">$ {BOX18}</div>
+      </div>
+      
+      <div class="box">
+        <div class="box-number">Box / Case 22</div>
+        <div class="box-label">Income tax deducted / Impôt sur le revenu retenu</div>
+        <div class="box-value">$ {BOX22}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>This is a computer-generated T4 slip. For official filing, please ensure all information is accurate.</p>
+    <p>Ce relevé T4 est généré par ordinateur. Pour la déclaration officielle, veuillez vous assurer que tous les renseignements sont exacts.</p>
+  </div>
+</body>
+</html>
